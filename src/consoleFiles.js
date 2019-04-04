@@ -1,7 +1,7 @@
 class consoleFiles {
   constructor() {
     var Datastore = require('nedb');
-    this.dbcf = new Datastore({filename: require('electron').app.getAppPath() + "\\consolefiles.db"});
+    this.dbcf = new Datastore({filename: require('electron').app.getAppPath() + "/consolefiles.db"});
     this.ipcMain = require('electron').ipcMain;
     console.log("Loading Console Mode Files");
     this.dbcf.loadDatabase(() => {
