@@ -13,11 +13,12 @@ var router = {
   matches: () => {ipcRenderer.sendSync("open-url","render/matches.html");}
 };
 
+//TODO Make currently selected item grey
 var sidebarElement = document.getElementById("sidebar");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.dashboard()\" class=\"item\"><i class=\"desktop icon\"></i>Dashboard</a>");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.processMatches()\" class=\"item\"><i class=\"folder open icon\"></i>Load Data</a>");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.teams()\" class=\"item\"><i class=\"id badge outline icon\"></i>Teams</a>");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.matches()\" class=\"item\"><i class=\"flag checkered icon\"></i>Matches</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.dashboard()\" class=\"active grey item\"><i class=\"th list icon\"></i>Rankings</a>");
+sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.dashboard()\" class=\"item\"><i class=\"th list icon\"></i>Rankings</a>");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.export()\" class=\"item\"><i class=\"table icon\"></i>Export CSV</a>");
 sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.console()\" class=\"item\"><i class=\"terminal icon\"></i>Console</a>");
