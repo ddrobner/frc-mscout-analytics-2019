@@ -1,5 +1,6 @@
 var app = require('electron').remote;
 var dialog = app.dialog;
+var fs = require('fs');
 
 var credClick = () => {
   var cred = $(".rating").rating("get rating");
@@ -67,7 +68,9 @@ var sync = () => {
 }
 
 var import_db = () => {
-  var dir_to_save = dialog.showOpenDialog(properties="openDirectory");
+  //TODO doesn't work when running from WebStorm, paths are different in dev environment and production
+  //var dir_to_save = dialog.showOpenDialog(properties="openDirectory", title="Select the Directory to Save To");
+  //fs.copyFile()
 }
 
 var export_db = () => {
