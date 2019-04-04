@@ -9,3 +9,5 @@ matchdb.db
 tbadb_lm.db
 tbadb_team.db
 consolefiles.db
+
+.idea/
