@@ -99,13 +99,13 @@
             <div class="ui segment">
               <h1 class="ui dividing header">Database Import/Export</h1>
               <div class="ui fluid buttons">
-                <div class="ui animated blue button" onclick="syncMatch({tbaData: null, matchType: {$in: ['Q', 'QF', 'SF', 'F']}})">
+                <div class="ui animated blue button" onclick="import_db()">
                   <div class="visible content">Import</div>
                   <div class="hidden content">
                     <i class="cloud download icon"></i>
                   </div>
                 </div>
-                <div class="ui animated orange button" onclick="syncMatch({})">
+                <div class="ui animated orange button" onclick="export_db()">
                   <div class="visible content">Export</div>
                   <div class="hidden content">
                     <i class="download icon"></i>

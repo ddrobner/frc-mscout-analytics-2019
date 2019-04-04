@@ -63,4 +63,12 @@ var sync = () => {
   credClick();
 }
 
+var import_db = () => {
+  dialog.showOpenDialog(properties="openDirectory");
+}
+
+var export_db = () => {
+  //TODO Placeholder
+}
+
 $(document).ready(() => {sync();});
