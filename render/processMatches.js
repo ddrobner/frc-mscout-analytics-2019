@@ -69,7 +69,11 @@ var sync = () => {
 }
 
 var import_db = () => {
-  //TODO Copy and refactor export code
+  var dir_to_read = dialog.showOpenDialog({ properties: ["openDirectory"]});
+  fs.copyFileSync(dir_to_read +"/consolefiles.db", "consolefiles.db");
+  fs.copyFileSync(dir_to_read + "/matchdb.db", "matchdb.db");
+  fs.copyFileSync(dir_to_read + "/tbadb_lm.db", "tbadb_lm.db");
+  fs.copyFileSync(dir_to_read + "/tbadb_team.db", "tbadb_team.db");
 }
 
 var export_db = () => {
