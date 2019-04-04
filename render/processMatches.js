@@ -1,3 +1,6 @@
+var app = require('electron').remote;
+var dialog = app.dialog;
+
 var credClick = () => {
   var cred = $(".rating").rating("get rating");
   var disp = document.getElementById("credDisp");
@@ -64,7 +67,7 @@ var sync = () => {
 }
 
 var import_db = () => {
-  dialog.showOpenDialog(properties="openDirectory");
+  var dir_to_save = dialog.showOpenDialog(properties="openDirectory");
 }
 
 var export_db = () => {
