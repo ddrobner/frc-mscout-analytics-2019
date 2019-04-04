@@ -1,6 +1,7 @@
 var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
+var os = require('os');
 
 var credClick = () => {
   var cred = $(".rating").rating("get rating");
@@ -67,20 +68,32 @@ var sync = () => {
   credClick();
 }
 
+var get_slash_type = () => {
+  if (os.platform() == 'win32'){
+    return "\\"
+  }
+  else {
+    return "/"
+  }
+}
+
 var import_db = () => {
-  var dir_to_read = dialog.showOpenDialog({ properties: ["openDirectory"]});
-  fs.copyFileSync(dir_to_read +"/consolefiles.db", "consolefiles.db");
-  fs.copyFileSync(dir_to_read + "/matchdb.db", "matchdb.db");
-  fs.copyFileSync(dir_to_read + "/tbadb_lm.db", "tbadb_lm.db");
-  fs.copyFileSync(dir_to_read + "/tbadb_team.db", "tbadb_team.db");
+  let slash_type = get_slash_type();
+
+  fs.copyFileSync(dir_to_read + slash_type + "consolefiles.db", "consolefiles.db");
+  fs.copyFileSync(dir_to_read + slash_type + "matchdb.db", "matchdb.db");
+  fs.copyFileSync(dir_to_read + slash_type +"tbadb_lm.db", "tbadb_lm.db");
+  fs.copyFileSync(dir_to_read + slash_type +"tbadb_team.db", "tbadb_team.db");
 }
 
 var export_db = () => {
+  let slash_type = get_slash_type();
+
   var dir_to_save = dialog.showOpenDialog({ properties: ["openDirectory"]});
-  fs.copyFileSync("consolefiles.db", dir_to_save + "/consolefiles.db");
-  fs.copyFileSync("matchdb.db", dir_to_save + "/matchdb.db");
-  fs.copyFileSync("tbadb_lm.db", dir_to_save + "/tbadb_lm.db");
-  fs.copyFileSync("tbadb_team.db", dir_to_save + "/tbadb_team.db");
+  fs.copyFileSync("consolefiles.db", dir_to_save + slash_type + "consolefiles.db");
+  fs.copyFileSync("matchdb.db", dir_to_save + slash_type + "matchdb.db");
+  fs.copyFileSync("tbadb_lm.db", dir_to_save + slash_type + "tbadb_lm.db");
+  fs.copyFileSync("tbadb_team.db", dir_to_save + slash_type + "tbadb_team.db");
 }
 
 $(document).ready(() => {sync();});
