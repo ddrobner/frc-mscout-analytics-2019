@@ -1,6 +1,7 @@
 var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
+const copyFile = require('fs-copy-file');
 
 var credClick = () => {
   var cred = $(".rating").rating("get rating");
@@ -68,13 +69,15 @@ var sync = () => {
 }
 
 var import_db = () => {
-  //TODO doesn't work when running from WebStorm, paths are different in dev environment and production
-  //var dir_to_save = dialog.showOpenDialog(properties="openDirectory", title="Select the Directory to Save To");
-  //fs.copyFile()
+  //TODO Copy and refactor export code
 }
 
 var export_db = () => {
-  //TODO Placeholder
+  var dir_to_save = dialog.showOpenDialog({ properties: ["openDirectory"]});
+  copyFile("consolefiles.db", dir_to_save + "/consolefiles.db", callback);
+  copyFile("matchdb.db", dir_to_save + "/matchdb.db", callback);
+  copyFile("tbadb_lm.db", dir_to_save + "/tbadb_lm.db", callback);
+  copyFile("tbadb_team.db", dir_to_save + "/tbadb_team.db", callback);
 }
 
 $(document).ready(() => {sync();});
