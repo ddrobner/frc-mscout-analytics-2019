@@ -74,10 +74,10 @@ var import_db = () => {
 
 var export_db = () => {
   var dir_to_save = dialog.showOpenDialog({ properties: ["openDirectory"]});
-  copyFile("consolefiles.db", dir_to_save + "/consolefiles.db", callback);
-  copyFile("matchdb.db", dir_to_save + "/matchdb.db", callback);
-  copyFile("tbadb_lm.db", dir_to_save + "/tbadb_lm.db", callback);
-  copyFile("tbadb_team.db", dir_to_save + "/tbadb_team.db", callback);
+  fs.copyFileSync("consolefiles.db", dir_to_save + "/consolefiles.db");
+  fs.copyFileSync("matchdb.db", dir_to_save + "/matchdb.db");
+  fs.copyFileSync("tbadb_lm.db", dir_to_save + "/tbadb_lm.db");
+  fs.copyFileSync("tbadb_team.db", dir_to_save + "/tbadb_team.db");
 }
 
 $(document).ready(() => {sync();});
