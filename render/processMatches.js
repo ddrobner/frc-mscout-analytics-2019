@@ -1,7 +1,6 @@
 var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
-const copyFile = require('fs-copy-file');
 
 var credClick = () => {
   var cred = $(".rating").rating("get rating");
