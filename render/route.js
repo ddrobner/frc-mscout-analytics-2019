@@ -13,12 +13,23 @@ var router = {
   matches: () => {ipcRenderer.sendSync("open-url","render/matches.html");}
 };
 
-//TODO Make currently selected item grey
+function setGrey(id){
+  //document.getElementById(id).className = "active grey item";
+  $("#" + id).attr('class', 'active grey item');
+  //document.querySelector('#' + id)
+}
+
+function removeGrey(id){
+  document.getElementById(id).className = "item";
+}
+
+//TODO Somehow stop the bar from reloading
+
 var sidebarElement = document.getElementById("sidebar");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.dashboard()\" class=\"item\"><i class=\"desktop icon\"></i>Dashboard</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.processMatches()\" class=\"item\"><i class=\"folder open icon\"></i>Load Data</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.teams()\" class=\"item\"><i class=\"id badge outline icon\"></i>Teams</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.matches()\" class=\"item\"><i class=\"flag checkered icon\"></i>Matches</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.dashboard()\" class=\"item\"><i class=\"th list icon\"></i>Rankings</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.export()\" class=\"item\"><i class=\"table icon\"></i>Export CSV</a>");
-sidebarElement.insertAdjacentHTML("beforeend","<a href=\"#\" onclick=\"router.console()\" class=\"item\"><i class=\"terminal icon\"></i>Console</a>");
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.dashboard(); setGrey(\'dboard\')" class="item" id="dboard"><i class="desktop icon"></i>Dashboard</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.processMatches(); setGrey(\'processMatches\')" class="item" id="processMatches"><i class="folder open icon"></i>Load Data</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.teams(); setGrey(\'teams\')" class="item" id="teams"><i class="id badge outline icon"></i>Teams</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.matches(); setGrey(\'matches\')" class="item" id="matches"><i class="flag checkered icon"></i>Matches</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.dashboard(); setGrey(\'dashboard\')" class="item" id="dashboard"><i class="th list icon"></i>Rankings</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.export(); setGrey(\'export\')" class="item" id="export"><i class="table icon"></i>Export CSV</a>');
+sidebarElement.insertAdjacentHTML("beforeend",'<a href="#" onclick="router.console(); setGrey(\'console\')" class="item" id="console"><i class="terminal icon"></i>Console</a>');
