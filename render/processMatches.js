@@ -80,6 +80,7 @@ var get_slash_type = () => {
 var import_db = () => {
   let slash_type = get_slash_type();
 
+  var dir_to_read = dialog.showOpenDialog({ properties: ["openDirectory"]});
   fs.copyFileSync(dir_to_read + slash_type + "consolefiles.db", "consolefiles.db");
   fs.copyFileSync(dir_to_read + slash_type + "matchdb.db", "matchdb.db");
   fs.copyFileSync(dir_to_read + slash_type +"tbadb_lm.db", "tbadb_lm.db");
