@@ -14,9 +14,8 @@ $margin: $verticalMargin $horizontalMargin !default;
 $borderCollapse: separate !default;
 $borderSpacing: 0px !default;
 $borderRadius: $defaultBorderRadius !default;
-$transition:
-  background $defaultDuration $defaultEasing,
-  color $defaultDuration $defaultEasing !default;
+$transition: background $defaultDuration $defaultEasing,
+color $defaultDuration $defaultEasing !default;
 $background: $white !default;
 $color: $textColor !default;
 $borderWidth: 1px !default;
@@ -155,10 +154,8 @@ $attachedHorizontalOffset: -$borderWidth !default;
 $attachedWidth: calc(100% + #{$attachedHorizontalOffset * -2}) !default;
 $attachedBoxShadow: none !default;
 $attachedBorder: $borderWidth solid $solidBorderColor !default;
-$attachedBottomBoxShadow:
-  $boxShadow,
-  $attachedBoxShadow
- !default;
+$attachedBottomBoxShadow: $boxShadow,
+$attachedBoxShadow !default;
 
 /* Striped */
 $stripedBackground: rgba(0, 0, 50, 0.02) !default;

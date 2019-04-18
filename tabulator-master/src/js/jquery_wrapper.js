@@ -10,38 +10,36 @@
  *
  */
 
- (function (factory) {
- 	"use strict";
- 	if (typeof define === 'function' && define.amd) {
- 		define(['jquery'], factory);
- 	}
- 	else if(typeof module !== 'undefined' && module.exports) {
- 		module.exports = factory(require('jquery'));
- 	}
- 	else {
- 		factory(jQuery);
- 	}
- }(function ($, undefined) {
- 	$.widget("ui.tabulator", {
- 		_create:function(){
- 			this.table = new Tabulator(this.element[0], this.options);
+(function (factory) {
+    "use strict";
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('jquery'));
+    } else {
+        factory(jQuery);
+    }
+}(function ($, undefined) {
+    $.widget("ui.tabulator", {
+        _create: function () {
+            this.table = new Tabulator(this.element[0], this.options);
 
- 			//map tabulator functions to jquery wrapper
- 			for(var key in Tabulator.prototype){
- 				if(typeof Tabulator.prototype[key] === "function" && key.charAt(0) !== "_"){
- 					this[key] = this.table[key].bind(this.table);
- 				}
- 			}
- 		},
+            //map tabulator functions to jquery wrapper
+            for (var key in Tabulator.prototype) {
+                if (typeof Tabulator.prototype[key] === "function" && key.charAt(0) !== "_") {
+                    this[key] = this.table[key].bind(this.table);
+                }
+            }
+        },
 
- 		_setOption: function(option, value){
- 			console.error("Tabulator jQuery wrapper does not support setting options after the table has been instantiated");
- 		},
+        _setOption: function (option, value) {
+            console.error("Tabulator jQuery wrapper does not support setting options after the table has been instantiated");
+        },
 
- 		_destroy: function(option, value){
- 			this.table.destroy();
- 		},
- 	});
- }));
+        _destroy: function (option, value) {
+            this.table.destroy();
+        },
+    });
+}));
 
 

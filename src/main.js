@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, Menu, ipcMain } = require('electron');
+const {app, BrowserWindow, dialog, Menu, ipcMain} = require('electron');
 const fs = require('fs');
 const fileLoader = require('./fileLoad.js');
 const matchDB = require('./matchDB.js');
@@ -10,7 +10,8 @@ var cf = {};
 
 app.on('ready', () => {
     console.log("Creating Browser Window");
-    win = new BrowserWindow({ width: 1300, height: 850, icon: __dirname + "/../assets/first.ico" });;
+    win = new BrowserWindow({width: 1300, height: 850, icon: __dirname + "/../assets/first.ico"});
+    ;
 
     var menu = Menu.buildFromTemplate([{
         label: 'Dev',
@@ -20,27 +21,25 @@ app.on('ready', () => {
 
     ipcMain.on("open-file", (event, arg) => {
         dialog.showOpenDialog(win, {properties: ["openDirectory"]}, (filePaths) => {
-            if(filePaths != undefined) {
+            if (filePaths != undefined) {
                 fl.load(filePaths[0], (contents) => {
                     var index = 0;
                     var run = () => {
-                        if(index < contents.length) {
+                        if (index < contents.length) {
                             mdb.addMatchLite(contents[index], arg, () => {
-                                console.log("Adding Content: " + (index+1) + "/" + contents.length);
+                                console.log("Adding Content: " + (index + 1) + "/" + contents.length);
                                 event.sender.send("open-file-track", {position: index, total: contents.length});
                                 index++;
                                 run();
                             });
-                        }
-                        else {
+                        } else {
                             event.sender.send("open-file-reply", null);
                             event.returnValue = null;
                         }
                     }
                     run();
                 });
-            }
-            else {
+            } else {
                 event.sender.send("open-file-reply", null);
                 event.returnValue = null;
             }
@@ -49,11 +48,10 @@ app.on('ready', () => {
 
     ipcMain.on("save-raw", (event, content) => {
         dialog.showSaveDialog({defaultPath: "raw.json"}, (fileName) => {
-            if (fileName === undefined){
+            if (fileName === undefined) {
                 console.log("You didn't save the file");
                 event.returnValue = null;
-            }
-            else {
+            } else {
                 fs.writeFile(fileName, content, (err) => {
                     event.returnValue = null;
                 });
